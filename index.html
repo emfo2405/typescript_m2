@@ -3,21 +3,32 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/src/style.css" />
     <title>Moment 2</title>
   </head>
   <body>
+    <main>
     <script type="module" src="/src/main.ts"></script>
 
     <div id="form">
+      <h2 id="form-title">Lägg till en uppgift i listan</h2>
     <label for="task">Att göra:</label>
     <input type="text" id="task" name="task" placeholder="Uppgift att göra...">
     <label for="priority">Prioritering:</label>
     <input type="text" id="priority" name="priority" placeholder="Uppgiftens prioritet (1, 2 eller 3)">
     </div>
 
-    <div id="submit">
+    <div id="submit-div">
       <button type="submit" id="submit-btn">Lägg till</button>
     </div>
 
+    <div id="todo-list">
+      <h3 id="todo-list-h">Min att-göra lista</h3>
+      <ul>
+        <li>Hej</li>
+      </ul>
+    </div>
+
+    </main>
   </body>
 </html>

@@ -1,1 +1,66 @@
+main {
+  background-color: burlywood;
+  width: 90%;
+  margin: auto;
+  box-shadow: 1px 1px 5px rgb(75, 24, 10);
+}
+
+body {
+  background-color: blanchedalmond;
+}
+
+input {
+  width: 80%;
+  padding: 2%;
+  margin: 10%;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+  background-color: rgb(245, 225, 199);
+  border-bottom: 5px solid rgb(75, 24, 10);
+}
+
+label {
+  margin-left: 10%;
+}
+
+#form-title {
+  margin-left: 10%;
+  padding-top:7%;
+  margin-bottom: 7%;
+}
+
+#submit-btn{
+background-color: rgb(245, 225, 199);
+border: 1px solid #c5c5c5;
+border-bottom: 5px solid  rgb(75, 24, 10);
+border-right: 5px solid  rgb(75, 24, 10);
+padding: 2%;
+padding-left: 3%;
+padding-right: 3%;
+border-radius: 5px;
+display: block;
+margin: 0 auto;
+}
+
+#submit-btn:hover {
+background-color: rgb(204, 182, 153);
+cursor: pointer;
+}
+
+#submit-div {
+  padding-bottom: 10%;
+}
+
+#todo-list-h {
+  margin-left: 10%;
+}
+
+li{
+margin-left: 15%;
+list-style-type: square;
+}
+
 
