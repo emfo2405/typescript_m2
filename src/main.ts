@@ -21,6 +21,15 @@ class ToDoList {
         }
     }
 
+    //För att kunna markera en uppgift som klar med en viss plats i arrayen
+    markTodoCompleted(todoIndex: number): void {
+        //Kontrollera att det finns en uppgift på platsen i arrayen
+        if(this.todos[todoIndex]) {
+            //Om det finns en task på platsen i arrayen markerar vi den som klar
+            this.todos[todoIndex].completed = true;
+        }
+    }
+
 
 }
 
