@@ -27,6 +27,7 @@ class ToDoList {
         priority: priority,
     };
     
+    //Lägger till det nya objektet i todos och sparar i localStorage
     this.todos.push(newTodo);
     this.saveToLocalStorage();
     return true;
@@ -64,6 +65,15 @@ class ToDoList {
     }
 
 }
+
+let ToDoListEl = new ToDoList();
+
+//Hämtar in elementen från HTML-fil
+let toDoEl = document.getElementById("task") as HTMLInputElement;
+let priorityEl = document.getElementById("priority") as HTMLInputElement;
+let submitBtn = document.getElementById("submit-btn") as HTMLButtonElement;
+let toDoListEl = document.getElementById("listUL") as HTMLUListElement;
+
 
 /*let taskForm = document.getElementById("taskForm") as HTMLFormElement;
 
