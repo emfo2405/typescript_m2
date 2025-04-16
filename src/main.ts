@@ -15,6 +15,7 @@ class ToDoList {
 
     }
 
+    //Om en uppgift är tom eller prioriteten inte är 1,2 eller 3 ska den markeras som false
     addTodo(task:string, priority:number): boolean {
         if (task === "" || priority != 1 || 2 || 3) {
             return false;
@@ -28,6 +29,11 @@ class ToDoList {
             //Om det finns en task på platsen i arrayen markerar vi den som klar
             this.todos[todoIndex].completed = true;
         }
+    }
+
+    //Returnerar de inmatade värdena från arrayen
+    getTodos(): Todo[] {
+        return this.todos;
     }
 
 
