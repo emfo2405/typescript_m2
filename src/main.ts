@@ -15,8 +15,10 @@ class ToDoList {
 
     }
 
-    //addTodo(task: string, priority: number): boolean {
-    //    if(task != "" && priority === 1 || 2 || 3 )
-    //        return true
-    //} 
+
 }
+
+//Hämtar in elementen från HTML
+let taskForm = document.getElementById("taskForm") as HTMLFormElement;
+let toDoEl = document.getElementById("task") as HTMLInputElement;
+let priorityEl = document.getElementById("priority") as HTMLInputElement;
