@@ -15,10 +15,30 @@ class ToDoList {
 
     }
 
+    addTodo(task:string, priority:number): boolean {
+        if (task === "" || priority != 1 || 2 || 3) {
+            return false;
+        }
+    }
+
 
 }
 
+/*let taskForm = document.getElementById("taskForm") as HTMLFormElement;
+
+//Hämta in den inmatade informationen från användaren
+taskForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+
 //Hämtar in elementen från HTML
-let taskForm = document.getElementById("taskForm") as HTMLFormElement;
 let toDoEl = document.getElementById("task") as HTMLInputElement;
 let priorityEl = document.getElementById("priority") as HTMLInputElement;
+
+let newToDo: Todo = {
+    task: toDoEl.value,
+    priority: priorityEl.value,
+    completed: false
+  };
+
+  console.log(newToDo);
+})*/
