@@ -41,6 +41,16 @@ class ToDoList {
         localStorage.setItem('todos', JSON.stringify(this.todos));
     }
 
+    //Hämta värden från localstorage
+    loadFromLocalStorage(): void {
+        //Hämtar in sparade värden från localstorage
+        let savedTasks = localStorage.getItem('todos');
+        //Kontrollera att det finns sparade värden
+        if(savedTasks) {
+            this.todos = JSON.parse(savedTasks);
+        }
+    }
+
 }
 
 /*let taskForm = document.getElementById("taskForm") as HTMLFormElement;
