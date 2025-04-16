@@ -36,6 +36,10 @@ class ToDoList {
         return this.todos;
     }
 
+    //Sparar värden till localstorage
+    saveToLocalStorage(): void {
+        localStorage.setItem('todos', JSON.stringify(this.todos));
+    }
 
 }
 
