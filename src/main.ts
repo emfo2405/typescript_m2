@@ -9,18 +9,30 @@ class ToDoList {
     //Skapar en array där inmatade objekt kan lagras
     private todos: Todo[] = [];
 
-    //Skapar en konstruktor 
-    constructor(todos: Todo[]) {
-        this.todos = [];
-
+    //Skapar en konstruktor som hämtar värden från localStorage
+    constructor() {
+        this.loadFromLocalStorage();
     }
 
     //Om en uppgift är tom eller prioriteten inte är 1,2 eller 3 ska den markeras som false
     addTodo(task:string, priority:number): boolean {
         if (task === "" || priority != 1 || 2 || 3) {
             return false;
-        }
+        } else {
+    
+        //Ett nytt objekt för att-göra listan
+    let newTodo: Todo = {
+        task: task,
+        completed: false,
+        priority: priority,
+    };
+    
+    this.todos.push(newTodo);
+    this.saveToLocalStorage();
+    return true;
     }
+}
+
 
     //För att kunna markera en uppgift som klar med en viss plats i arrayen
     markTodoCompleted(todoIndex: number): void {
