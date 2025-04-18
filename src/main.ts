@@ -73,6 +73,7 @@ let toDoEl = document.getElementById("task") as HTMLInputElement;
 let priorityEl = document.getElementById("priority") as HTMLInputElement;
 let submitBtn = document.getElementById("submit-btn") as HTMLButtonElement;
 let toDoListUl = document.getElementById("listUL") as HTMLUListElement;
+let taskForm = document.getElementById("task-form") as HTMLFormElement;
 
 //Funktion för att lägga till 
 function printToDoList() {
@@ -92,24 +93,28 @@ function printToDoList() {
 )
 }
 
-
-
-
-/*let taskForm = document.getElementById("taskForm") as HTMLFormElement;
-
-//Hämta in den inmatade informationen från användaren
-taskForm.addEventListener("submit", (event) => {
+/*När användaren klickar på submit körs funktionen medan preventDefault hindrar sidan från att laddas om när 
+formuläret skickas och istället hanterar vi händelsen med TypeScript*/
+submitBtn.addEventListener("submit", (event) => {
     event.preventDefault();
 
-//Hämtar in elementen från HTML
-let toDoEl = document.getElementById("task") as HTMLInputElement;
-let priorityEl = document.getElementById("priority") as HTMLInputElement;
+    //Hämta värden för uppgift och prioritering från formulärinputs
+    let taskInput = toDoEl.value;
+    let priorityInput = parseInt(priorityEl.value);
 
-let newToDo: Todo = {
-    task: toDoEl.value,
-    priority: priorityEl.value,
-    completed: false
-  };
+    //Lägga till värdena från formuläret i klassen todolist
+    let userInput = toDoListEl.addTodo(taskInput, priorityInput);
 
-  console.log(newToDo);
-})*/
+    //Om userInput inte överensstämmer med det som är sagt visas ett felmeddelande
+    if(!userInput) {
+        alert("Kontrollera att fälten är ifyllda och att prioriteringen är 1, 2 eller 3!");
+        return;
+    }
+
+    taskForm.reset();
+    printToDoList();
+
+});
+
+printToDoList();
+
