@@ -16,7 +16,7 @@ class ToDoList {
 
     //Om en uppgift är tom eller prioriteten inte är 1,2 eller 3 ska den markeras som false
     addTodo(task:string, priority:number): boolean {
-        if (task === "" || priority != 1 || 2 || 3) {
+        if (task === "" || ![1, 2, 3].includes(priority)) {
             return false;
         } else {
     
@@ -24,7 +24,7 @@ class ToDoList {
     let newTodo: Todo = {
         task: task,
         completed: false,
-        priority: priority,
+        priority: priority as 1 | 2 | 3,
     };
     
     //Lägger till det nya objektet i todos och sparar i localStorage
@@ -95,7 +95,7 @@ function printToDoList() {
 
 /*När användaren klickar på submit körs funktionen medan preventDefault hindrar sidan från att laddas om när 
 formuläret skickas och istället hanterar vi händelsen med TypeScript*/
-submitBtn.addEventListener("submit", (event) => {
+submitBtn.addEventListener("click", (event) => {
     event.preventDefault();
 
     //Hämta värden för uppgift och prioritering från formulärinputs
