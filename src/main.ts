@@ -66,13 +66,33 @@ class ToDoList {
 
 }
 
-let ToDoListEl = new ToDoList();
+let toDoListEl = new ToDoList();
 
 //Hämtar in elementen från HTML-fil
 let toDoEl = document.getElementById("task") as HTMLInputElement;
 let priorityEl = document.getElementById("priority") as HTMLInputElement;
 let submitBtn = document.getElementById("submit-btn") as HTMLButtonElement;
-let toDoListEl = document.getElementById("listUL") as HTMLUListElement;
+let toDoListUl = document.getElementById("listUL") as HTMLUListElement;
+
+//Funktion för att lägga till 
+function printToDoList() {
+
+    //Rensa listan för att inte skapa multiplar
+    toDoListUl.innerHTML = "";
+
+    toDoListEl.getTodos().forEach((Todo, todoIndex) =>
+    {
+        //Skapa ett nytt li element i listan med text från objektet
+        let li = document.createElement("li");
+        li.innerText = `${Todo.task}, med prioriteten ${Todo.priority}`;
+
+        toDoListUl.appendChild(li);
+
+    }
+)
+}
+
+
 
 
 /*let taskForm = document.getElementById("taskForm") as HTMLFormElement;
