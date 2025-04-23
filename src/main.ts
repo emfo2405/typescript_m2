@@ -58,7 +58,7 @@ class ToDoList {
     loadFromLocalStorage(): void {
         //Hämtar in sparade värden från localstorage
         let savedTasks = localStorage.getItem('todos');
-        //Kontrollera att det finns sparade värden
+        //Kontrollera att det finns sparade värden och hämta dem
         if(savedTasks) {
             this.todos = JSON.parse(savedTasks);
         }
@@ -72,25 +72,50 @@ let toDoListEl = new ToDoList();
 let toDoEl = document.getElementById("task") as HTMLInputElement;
 let priorityEl = document.getElementById("priority") as HTMLInputElement;
 let submitBtn = document.getElementById("submit-btn") as HTMLButtonElement;
-let toDoListUl = document.getElementById("listUL") as HTMLUListElement;
+let toDoListUl = document.getElementById("list-prio1") as HTMLUListElement;
+let toDoListUl2 = document.getElementById("list-prio2") as HTMLUListElement;
+let toDoListUl3 = document.getElementById("list-prio3") as HTMLUListElement;
 let taskForm = document.getElementById("task-form") as HTMLFormElement;
 
-//Funktion för att lägga till 
+//Funktion för att lägga till nytt element i listan
 function printToDoList() {
 
     //Rensa listan för att inte skapa multiplar
     toDoListUl.innerHTML = "";
+    toDoListUl2.innerHTML = "";
+    toDoListUl3.innerHTML = "";
 
+    //För varje element i listan todos skapas ett li-element i listan
     toDoListEl.getTodos().forEach((Todo, todoIndex) =>
     {
         //Skapa ett nytt li element i listan med text från objektet
         let li = document.createElement("li");
-        li.innerText = `${Todo.task}, med prioriteten ${Todo.priority}`;
+            li.innerText = `${Todo.task}`;
+        //Markerar om en uppgift är slutförd
+        li.style.textDecoration = Todo.completed ? "line-through" : "none";
 
-        toDoListUl.appendChild(li);
 
-    }
-)
+        let doneButton = document.createElement("button");
+        doneButton.innerText = "Slutför";
+        doneButton.id = "done-button";
+        doneButton.addEventListener("click", () => {
+            toDoListEl.markTodoCompleted(todoIndex);
+            toDoListEl.saveToLocalStorage();
+            printToDoList();
+        })
+
+        //Lägg till knapp på listelementen
+        li.appendChild(doneButton);
+
+        //Lägg till element i olika listor baserat på prioritet
+        if(Todo.priority === 1) {
+             toDoListUl.appendChild(li);
+        } else if(Todo.priority === 2) {
+                 toDoListUl2.appendChild(li);
+        } else {
+            toDoListUl3.appendChild(li);
+        }
+    });
 }
 
 /*När användaren klickar på submit körs funktionen medan preventDefault hindrar sidan från att laddas om när 

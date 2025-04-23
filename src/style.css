@@ -63,4 +63,12 @@ margin-left: 15%;
 list-style-type: square;
 }
 
+#done-button {
+  background-color: burlywood;
+  border-color: rgb(75, 24, 10);
+  border-radius: 10px;
+  margin-left: 10%;
+  
+}
+
 
