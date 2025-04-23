@@ -1,6 +1,6 @@
 main {
   background-color: burlywood;
-  width: 90%;
+  width: 900px;
   margin: auto;
   box-shadow: 1px 1px 5px rgb(75, 24, 10);
 }
@@ -24,12 +24,12 @@ input {
 
 label {
   margin-left: 10%;
+  font-size: 120%;
 }
 
 #form-title {
-  margin-left: 10%;
-  padding-top:7%;
-  margin-bottom: 7%;
+text-align: center;
+padding-top: 5%;
 }
 
 #submit-btn{
@@ -43,6 +43,7 @@ padding-right: 3%;
 border-radius: 5px;
 display: block;
 margin: 0 auto;
+margin-bottom: 10%;
 }
 
 #submit-btn:hover {
@@ -54,21 +55,50 @@ cursor: pointer;
   padding-bottom: 10%;
 }
 
-#todo-list-h {
-  margin-left: 10%;
-}
-
 li{
 margin-left: 15%;
 list-style-type: square;
 }
 
-#done-button {
+#done-button, #delete-button {
   background-color: burlywood;
   border-color: rgb(75, 24, 10);
   border-radius: 10px;
-  margin-left: 10%;
-  
+  margin-left: 5%;
+  padding: 1%;
 }
+
+#delete-button {
+  margin-left: 1%;
+}
+
+h2 {
+  margin-left: 10%;
+}
+
+h3 {
+  margin-left: 12%;
+}
+
+#list-prio1, #list-prio2, #list-prio3 {
+  border: solid rgb(75, 24, 10);
+  background-color: rgb(245, 225, 199);
+  padding: 3%;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+#todo-list {
+  padding-bottom: 10%;
+}
+
+@media (max-width: 1000px) {
+
+  main {
+    width: 470px;
+  }
+}
+
+
 
 

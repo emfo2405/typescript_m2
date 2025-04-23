@@ -1,3 +1,4 @@
+//Skapar ett interface bestående av task i string-format, completed som är sant eller falskt och prioritet 1, 2 eller 3
 interface Todo {
     task: string,
     completed: boolean,
@@ -16,11 +17,12 @@ class ToDoList {
 
     //Om en uppgift är tom eller prioriteten inte är 1,2 eller 3 ska den markeras som false
     addTodo(task:string, priority:number): boolean {
+        //Kollar det inmatade värdet
         if (task === "" || ![1, 2, 3].includes(priority)) {
             return false;
         } else {
     
-        //Ett nytt objekt för att-göra listan
+        //Om allt stämmer skapas ett nytt objekt för att-göra listan
     let newTodo: Todo = {
         task: task,
         completed: false,
@@ -41,6 +43,15 @@ class ToDoList {
         if(this.todos[todoIndex]) {
             //Om det finns en task på platsen i arrayen markerar vi den som klar
             this.todos[todoIndex].completed = true;
+        }
+    }
+
+    //Funktion för att kunna radera ett element i listan
+    deleteTodo(todoIndex: number): void {
+        //Kollar att index-numret är större än eller lika med noll samt mindre än längden för todos-arrayen
+        if(todoIndex >= 0 && this.todos.length) {
+            //Tar bort elementet med index todoIndex och tar bort ett element
+            this.todos.splice(todoIndex, 1);
         }
     }
 
@@ -94,18 +105,33 @@ function printToDoList() {
         //Markerar om en uppgift är slutförd
         li.style.textDecoration = Todo.completed ? "line-through" : "none";
 
-
+        //Skapar en knapp för att markera en uppgift som klar
         let doneButton = document.createElement("button");
         doneButton.innerText = "Slutför";
         doneButton.id = "done-button";
+        //Vid klick på knappen ska elementet markeras som klart och listan sparas till localstorage igen
         doneButton.addEventListener("click", () => {
             toDoListEl.markTodoCompleted(todoIndex);
             toDoListEl.saveToLocalStorage();
             printToDoList();
         })
 
-        //Lägg till knapp på listelementen
+        //Skapar en knapp för att radera ett element i listan
+        let deleteButton = document.createElement("button");
+        deleteButton.innerText = "Radera";
+        deleteButton.id = "delete-button";
+        //Vid klick på knappen ska elementet raderas och listan sparas om
+        deleteButton.addEventListener("click", () => {
+            toDoListEl.deleteTodo(todoIndex);
+            toDoListEl.saveToLocalStorage();
+            printToDoList();
+        })
+
+
+
+        //Lägg till knappar på listelementen
         li.appendChild(doneButton);
+        li.appendChild(deleteButton);
 
         //Lägg till element i olika listor baserat på prioritet
         if(Todo.priority === 1) {
@@ -136,6 +162,7 @@ submitBtn.addEventListener("click", (event) => {
         return;
     }
 
+    //Formuläret återställs när det skickas iväg
     taskForm.reset();
     printToDoList();
 
